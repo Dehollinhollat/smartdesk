@@ -1,10 +1,11 @@
 import anthropic
 import os
+import json
 from dotenv import load_dotenv
 from rag import rechercher_faq
+from datetime import datetime
 
 load_dotenv()
-
 client = anthropic.Anthropic(api_key=os.environ.get("ANTHROPIC_API_KEY"))
 
 def traiter_ticket(employe, description, priorite):
@@ -44,6 +45,28 @@ Ta réponse :"""
     texte = response.content[0].text
     escalade = texte.startswith("ESCALADE:")
 
+    # Logger le ticket
+    log_entry = {
+        "id": f"TK-{datetime.now().strftime('%Y%m%d%H%M%S')}",
+        "date": datetime.now().strftime("%d/%m/%Y %H:%M"),
+        "employe": employe,
+        "description": description,
+        "priorite": priorite,
+        "escalade": escalade,
+        "faq_consultee": [m["sujet"] for m in metas_faq]
+    }
+
+    try:
+        with open("data/tickets_log.json", "r", encoding="utf-8") as f:
+            logs = json.load(f)
+    except:
+        logs = []
+
+    logs.append(log_entry)
+
+    with open("data/tickets_log.json", "w", encoding="utf-8") as f:
+        json.dump(logs, f, ensure_ascii=False, indent=2)
+
     return {
         "employe": employe,
         "description": description,
@@ -54,7 +77,6 @@ Ta réponse :"""
     }
 
 if __name__ == "__main__":
-    # Test avec 3 tickets
     tickets_test = [
         ("Marc Dupont", "Mon mot de passe a expiré, je ne peux plus accéder à ma messagerie.", "Haute"),
         ("Lucas Martin", "Écran bleu au démarrage, impossible de démarrer Windows.", "Bloquant"),
