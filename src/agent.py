@@ -1,17 +1,27 @@
-import anthropic
+import sys
 import os
+sys.stdout.reconfigure(encoding='utf-8')
+
+# Lecture manuelle du .env sans dotenv
+env_path = os.path.join(os.path.dirname(os.path.abspath(__file__)), ".env")
+with open(env_path, "r", encoding="utf-8") as f:
+    for line in f:
+        line = line.strip()
+        if line and not line.startswith("#") and "=" in line:
+            key, value = line.split("=", 1)
+            os.environ[key.strip()] = value.strip()
+
+import anthropic
 import json
-from dotenv import load_dotenv
 from rag import rechercher_faq
 from datetime import datetime
 
-load_dotenv()
-client = anthropic.Anthropic(api_key=os.environ.get("ANTHROPIC_API_KEY"))
+api_key = os.environ.get("ANTHROPIC_API_KEY", "").strip()
+client = anthropic.Anthropic(api_key=api_key)
 
-def traiter_ticket(employe, description, priorite):
+def traiter_ticket(Nom, description, priorite):
     """Traite un ticket IT et retourne une réponse ou une escalade"""
 
-    # Recherche RAG dans la FAQ
     docs_faq, metas_faq = rechercher_faq(description)
     contexte_faq = "\n".join([
         f"[{m['categorie']}] {d}" for d, m in zip(docs_faq, metas_faq)
@@ -24,7 +34,7 @@ BASE DE CONNAISSANCES FAQ :
 {contexte_faq}
 
 TICKET REÇU :
-- Employé : {employe}
+- Employé : {Nom}
 - Priorité : {priorite}
 - Description : {description}
 
@@ -45,11 +55,10 @@ Ta réponse :"""
     texte = response.content[0].text
     escalade = texte.startswith("ESCALADE:")
 
-    # Logger le ticket
     log_entry = {
         "id": f"TK-{datetime.now().strftime('%Y%m%d%H%M%S')}",
         "date": datetime.now().strftime("%d/%m/%Y %H:%M"),
-        "employe": employe,
+        "Nom": Nom,
         "description": description,
         "priorite": priorite,
         "escalade": escalade,
@@ -64,11 +73,12 @@ Ta réponse :"""
 
     logs.append(log_entry)
 
+    os.makedirs("data", exist_ok=True)
     with open("data/tickets_log.json", "w", encoding="utf-8") as f:
         json.dump(logs, f, ensure_ascii=False, indent=2)
 
     return {
-        "employe": employe,
+        "Nom": Nom,
         "description": description,
         "priorite": priorite,
         "escalade": escalade,
@@ -83,12 +93,12 @@ if __name__ == "__main__":
         ("Kevin Nguyen", "Comment installer Microsoft Teams sur mon poste ?", "Basse"),
     ]
 
-    for employe, description, priorite in tickets_test:
+    for Nom, description, priorite in tickets_test:
         print(f"\n{'='*60}")
-        print(f"TICKET — {employe} [{priorite}]")
+        print(f"TICKET — {Nom} [{priorite}]")
         print(f"Description : {description}")
         print(f"{'='*60}")
-        resultat = traiter_ticket(employe, description, priorite)
+        resultat = traiter_ticket(Nom, description, priorite)
         print(f"Escalade : {'OUI' if resultat['escalade'] else 'NON'}")
         print(f"FAQ consultée : {resultat['faq_consultee']}")
         print(f"Réponse :\n{resultat['reponse']}")
