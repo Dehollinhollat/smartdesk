@@ -1,0 +1,50 @@
+[
+  {
+    "id": "FAQ-001",
+    "sujet": "Réinitialisation mot de passe",
+    "categorie": "Accès",
+    "contenu": "Pour réinitialiser votre mot de passe, rendez-vous sur le portail IT, section Mot de passe oublié. Saisissez votre email professionnel et suivez le lien reçu par SMS. L'opération prend moins de 2 minutes."
+  },
+  {
+    "id": "FAQ-002",
+    "sujet": "Problème de connexion VPN",
+    "categorie": "Accès",
+    "contenu": "Vérifiez que le client Cisco AnyConnect est à jour. Redémarrez le service VPN depuis le gestionnaire de services Windows. Si le problème persiste après redémarrage, escalader au niveau 2."
+  },
+  {
+    "id": "FAQ-003",
+    "sujet": "Installation d'un logiciel",
+    "categorie": "Installation",
+    "contenu": "Accédez au portail Selfservice IT, section Catalogue logiciels. Sélectionnez le logiciel souhaité et cliquez sur Installer. Un redémarrage peut être nécessaire après installation."
+  },
+  {
+    "id": "FAQ-004",
+    "sujet": "Demande de nouveau matériel",
+    "categorie": "Matériel",
+    "contenu": "Soumettez une demande via le portail RH, section Matériel, Nouvelle demande. La validation de votre manager est requise sous 48h. Le délai de livraison est de 5 à 10 jours ouvrés."
+  },
+  {
+    "id": "FAQ-005",
+    "sujet": "Accès serveur partagé refusé",
+    "categorie": "Accès",
+    "contenu": "Vérifiez vos droits d'accès avec votre manager. Si les droits sont confirmés, ouvrez un ticket pour l'équipe Active Directory qui traitera la demande sous 24h."
+  },
+  {
+    "id": "FAQ-006",
+    "sujet": "PC lent après mise à jour",
+    "categorie": "Performance",
+    "contenu": "Redémarrez le poste. Lancez un scan antivirus complet. Videz le cache navigateur. Désactivez les programmes au démarrage inutiles. Si le problème persiste après ces étapes, escalader au niveau 2."
+  },
+  {
+    "id": "FAQ-007",
+    "sujet": "Problème imprimante",
+    "categorie": "Matériel",
+    "contenu": "Vérifiez la connexion réseau de l'imprimante. Supprimez et réinstallez le pilote depuis le gestionnaire de périphériques. Redémarrez l'imprimante. Si le problème persiste, contacter le support matériel."
+  },
+  {
+    "id": "FAQ-008",
+    "sujet": "Écran bleu Windows BSOD",
+    "categorie": "Système",
+    "contenu": "Cas complexe nécessitant une intervention physique sur le poste. Escalade automatique au niveau 2 avec priorité haute. Un technicien sera dépêché sur site sous 2h."
+  }
+]
