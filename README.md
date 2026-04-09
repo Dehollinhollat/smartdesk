@@ -9,14 +9,16 @@ Dans les ESN et entreprises, le support IT interne traite chaque semaine des
 centaines de tickets. Une grande partie concerne des problèmes récurrents et
 bien documentés : réinitialisation de mot de passe, problème VPN, installation
 de logiciel.
+
 SmartDesk automatise ce cycle en déployant un agent IA capable de :
 - **Lire et comprendre** le ticket de l'employé
 - **Consulter la base de connaissances** IT via une recherche sémantique (RAG)
 - **Répondre automatiquement** aux cas simples avec une réponse personnalisée
 - **Escalader intelligemment** les cas complexes à un agent humain
 
+
 **🎯 Résultat : traitement automatique des tickets simples, escalade justifiée
-des cas complexes — exposé via une API REST consommable.**
+des cas complexes exposé via une API REST consommable.**
 
 ---
 ## 🧠 Concepts clés
