@@ -1,4 +1,5 @@
 # 🟣 SmartDesk — Agent IA de Support IT avec RAG et Escalade Automatique
+
 > Projet personnel réalisé dans le cadre d'une formation MBA Big Data & IA
 > pour développer des compétences concrètes en IA générative et développement API.
 ---
@@ -8,7 +9,6 @@ Dans les ESN et entreprises, le support IT interne traite chaque semaine des
 centaines de tickets. Une grande partie concerne des problèmes récurrents et
 bien documentés : réinitialisation de mot de passe, problème VPN, installation
 de logiciel.
-
 SmartDesk automatise ce cycle en déployant un agent IA capable de :
 - **Lire et comprendre** le ticket de l'employé
 - **Consulter la base de connaissances** IT via une recherche sémantique (RAG)
@@ -47,19 +47,27 @@ RÉPONSE     ESCALADE
 
 SmartDesk embarque un dashboard Streamlit avec deux vues distinctes.
 
-### Vue Employé — Soumission de ticket
+### Exemple de réponse automatique — Vue Employé
 
-Interface simple permettant à l'employé de soumettre un ticket sans savoir qu'une IA traite sa demande. Une référence ticket est générée automatiquement.
+L'employé soumet son ticket via un formulaire simple. L'agent répond automatiquement aux cas simples sans que l'employé sache qu'une IA traite sa demande.
 
-![Vue Employé — Formulaire de soumission](screenshots/vue_employe.png)
+![Exemple de réponse automatique](docs/Exemple_réponse_automatique.png)
 
 ---
 
-### Vue Admin — Supervision et KPIs
+### Exemple d'escalade automatique
+
+Pour les cas complexes, l'agent escalade automatiquement vers un technicien niveau 2.
+
+![Exemple d'escalade](docs/Exemple_escalade.png)
+
+---
+
+### Dashboard Admin — Supervision et KPIs
 
 Interface dédiée aux administrateurs : KPIs en temps réel, historique complet des tickets, liste des escalades et graphiques de suivi.
 
-![Vue Admin — Dashboard de supervision](screenshots/vue_admin.png)
+![Dashboard Admin](docs/Dashboard_admin.png)
 
 ---
 ## 🖥️ Démo — Swagger UI
@@ -137,6 +145,26 @@ streamlit run src/Accueil.py
 
 ---
 ## 📂 Structure du repo
+```
+smartdesk/
+├── data/
+│   ├── faq_it.json
+│   └── tickets_log.json
+├── docs/
+│   ├── Dashboard_admin.png
+│   ├── Exemple_réponse_automatique.png
+│   └── Exemple_escalade.png
+├── src/
+│   ├── pages/
+│   │   └── Admin.py
+│   ├── accueil.py
+│   ├── agent.py
+│   ├── main.py
+│   └── rag.py
+├── .gitignore
+├── README.md
+└── requirements.txt
+```
 
 ---
 ## 💡 Améliorations possibles
@@ -148,3 +176,4 @@ streamlit run src/Accueil.py
 ## 👤 Auteur
 **Déhollin HOLLAT** — Chef de Projet Data IA  
 Formation MBA Big Data & IA
+**Dehollin.hollat@outlook.fr**
