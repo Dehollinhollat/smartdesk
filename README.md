@@ -1,12 +1,9 @@
 # 🟣 SmartDesk — Agent IA de Support IT avec RAG et Escalade Automatique
-
 > Projet personnel réalisé dans le cadre d'une formation MBA Big Data & IA
 > pour développer des compétences concrètes en IA générative et développement API.
-
 ---
 
 ## 📌 Problématique
-
 Dans les ESN et entreprises, le support IT interne traite chaque semaine des
 centaines de tickets. Une grande partie concerne des problèmes récurrents et
 bien documentés : réinitialisation de mot de passe, problème VPN, installation
@@ -22,9 +19,7 @@ SmartDesk automatise ce cycle en déployant un agent IA capable de :
 des cas complexes — exposé via une API REST consommable.**
 
 ---
-
 ## 🧠 Concepts clés
-
 | Concept | Application dans SmartDesk |
 |---|---|
 | **RAG** (Retrieval-Augmented Generation) | L'agent consulte la FAQ IT avant de répondre |
@@ -32,29 +27,45 @@ des cas complexes — exposé via une API REST consommable.**
 | **API REST** | Endpoint POST /ticket consommable par n'importe quel système |
 
 ---
-
 ## ⚙️ Architecture
-
+```
 [Ticket entrant via POST /ticket]
-↓
+        ↓
 [Recherche sémantique dans ChromaDB]
-↓
+        ↓
 [API Claude — analyse ticket + FAQ]
-↓
-/     
-Simple   Complexe
-↓          ↓
+        ↓
+      /     \
+  Simple   Complexe
+    ↓          ↓
 RÉPONSE     ESCALADE
-AUTO       NIVEAU 2
+  AUTO       NIVEAU 2
+```
+
+---
+## 🖥️ Dashboard Streamlit
+
+SmartDesk embarque un dashboard Streamlit avec deux vues distinctes.
+
+### Vue Employé — Soumission de ticket
+
+Interface simple permettant à l'employé de soumettre un ticket sans savoir qu'une IA traite sa demande. Une référence ticket est générée automatiquement.
+
+![Vue Employé — Formulaire de soumission](screenshots/vue_employe.png)
 
 ---
 
-## 🖥️ Démo — Swagger UI
+### Vue Admin — Supervision et KPIs
 
+Interface dédiée aux administrateurs : KPIs en temps réel, historique complet des tickets, liste des escalades et graphiques de suivi.
+
+![Vue Admin — Dashboard de supervision](screenshots/vue_admin.png)
+
+---
+## 🖥️ Démo — Swagger UI
 L'API expose une documentation interactive auto-générée par FastAPI.
 
 ### Exemple de ticket simple — Réponse automatique
-
 **Requête :**
 ```json
 {
@@ -63,7 +74,6 @@ L'API expose une documentation interactive auto-générée par FastAPI.
   "priorite": "Haute"
 }
 ```
-
 **Réponse :**
 ```json
 {
@@ -75,7 +85,6 @@ L'API expose une documentation interactive auto-générée par FastAPI.
 ```
 
 ### Exemple de ticket complexe — Escalade automatique
-
 **Requête :**
 ```json
 {
@@ -84,7 +93,6 @@ L'API expose une documentation interactive auto-générée par FastAPI.
   "priorite": "Bloquant"
 }
 ```
-
 **Réponse :**
 ```json
 {
@@ -96,60 +104,47 @@ L'API expose une documentation interactive auto-générée par FastAPI.
 ```
 
 ---
-
 ## 🚀 Installation & Lancement
-
 ```bash
 # 1. Cloner le repo
 git clone https://github.com/ton-profil/smartdesk.git
 cd smartdesk
-
 # 2. Installer les dépendances
 pip install -r requirements.txt
-
 # 3. Créer le fichier .env
 echo "ANTHROPIC_API_KEY=ta-clé-api" > .env
-
 # 4. Indexer la FAQ dans ChromaDB
 python src/rag.py
-
 # 5. Lancer l'API
 python -m uvicorn src.main:app --reload
-
 # 6. Ouvrir la documentation Swagger
 # http://127.0.0.1:8000/docs
+# 7. Lancer le dashboard Streamlit
+streamlit run src/Accueil.py
 ```
 
 ---
-
 ## 🛠️ Stack technique
-
 | Outil | Rôle |
 |---|---|
 | Python | Langage principal |
 | API Claude (Anthropic) | Génération des réponses et décision d'escalade |
 | ChromaDB | Base vectorielle pour la recherche sémantique (RAG) |
 | FastAPI | Exposition de l'agent via une API REST |
+| Streamlit | Dashboard employé et admin |
 | Uvicorn | Serveur ASGI pour FastAPI |
 | python-dotenv | Gestion sécurisée de la clé API |
 
 ---
-
 ## 📂 Structure du repo
 
-
 ---
-
 ## 💡 Améliorations possibles
-
 - Ajout d'un historique de conversation (mémoire multi-tours)
 - Connexion à un vrai système de ticketing (Jira, ServiceNow)
-- Dashboard de suivi des tickets via Streamlit
 - Déploiement sur Railway ou Render
 
 ---
-
 ## 👤 Auteur
-
-**Déhollin HOLLAT** — Chef de Projet Data IA
+**Déhollin HOLLAT** — Chef de Projet Data IA  
 Formation MBA Big Data & IA
