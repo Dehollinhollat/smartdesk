@@ -177,5 +177,4 @@ smartdesk/
 ---
 ## 👤 Auteur
 **Déhollin HOLLAT** — Chef de Projet Data IA  
-Formation MBA Big Data & IA
 **Dehollin.hollat@outlook.fr**
