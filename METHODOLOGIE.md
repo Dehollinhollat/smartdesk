@@ -35,9 +35,6 @@ Deux profils d'utilisateurs ont été pensés dès le départ :
 
 ## Vue d'ensemble du pipeline
 
-<!-- Image : schéma architecture SmartDesk -->
-![Architecture SmartDesk](docs/images/architecture.png)
-
 ```
 👤 Employé soumet un ticket
 │
@@ -90,8 +87,6 @@ Quand un ticket arrive, la même opération est faite sur le texte du ticket —
 | Recherche | Le ticket entrant est vectorisé et comparé à la base |
 | Résultat | Les 2-3 documents les plus proches sont retournés |
 
-<!-- Image : exemple de recherche RAG dans le terminal -->
-![RAG SmartDesk](docs/images/rag_result.png)
 
 ---
 
@@ -113,8 +108,6 @@ Le prompt est conçu pour forcer une réponse structurée — l'agent ne peut pa
 | Problème non documenté | 🔴 ESCALADE |
 | Ticket ambigu ou incomplet | 🔴 ESCALADE |
 
-<!-- Image : exemple de réponse agent dans le terminal -->
-![Agent SmartDesk](docs/images/agent_result.png)
 
 ---
 
@@ -131,9 +124,6 @@ Le pipeline (RAG + agent) est exposé via une **API REST FastAPI**. Cela permet 
 | `GET /tickets` | Récupérer l'historique des tickets (usage admin) |
 
 Chaque ticket traité est archivé dans `data/tickets_log.json` avec l'horodatage, la décision, la réponse et le statut.
-
-<!-- Image : capture Swagger FastAPI SmartDesk -->
-![Swagger SmartDesk](docs/images/swagger.png)
 
 ---
 
@@ -153,11 +143,6 @@ Le dashboard Streamlit propose **deux vues distinctes** accessibles depuis la m�
 - Historique complet des tickets avec filtres
 - Visualisation des escalades en attente
 
-<!-- Image : capture vue Employé -->
-![Vue Employé](docs/images/vue_employe.png)
-
-<!-- Image : capture vue Admin -->
-![Vue Admin](docs/images/vue_admin.png)
 
 ---
 
