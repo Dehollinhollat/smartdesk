@@ -1,4 +1,4 @@
-# SmartDesk — Agent IA de Support IT avec RAG et Escalade Automatique
+# SmartDesk - Agent IA de Support IT avec RAG et Escalade Automatique
 
 > Projet personnel réalisé dans le cadre d'une formation MBA Big Data & IA
 > pour développer des compétences concrètes en IA générative et développement API.
@@ -35,7 +35,7 @@ des cas complexes exposé via une API REST consommable.**
         ↓
 [Recherche sémantique dans ChromaDB]
         ↓
-[API Claude — analyse ticket + FAQ]
+[API Claude - analyse ticket + FAQ]
         ↓
       /     \
   Simple   Complexe
@@ -49,7 +49,7 @@ RÉPONSE     ESCALADE
 
 SmartDesk embarque un dashboard Streamlit avec deux vues distinctes.
 
-### Exemple de réponse automatique — Vue Employé
+### Exemple de réponse automatique - Vue Employé
 
 L'employé soumet son ticket via un formulaire simple. L'agent répond automatiquement aux cas simples sans que l'employé sache qu'une IA traite sa demande.
 
@@ -65,17 +65,17 @@ Pour les cas complexes, l'agent escalade automatiquement vers un technicien nive
 
 ---
 
-### Dashboard Admin — Supervision et KPIs
+### Dashboard Admin - Supervision et KPIs
 
 Interface dédiée aux administrateurs : KPIs en temps réel, historique complet des tickets, liste des escalades et graphiques de suivi.
 
 ![Dashboard Admin](docs/Dashboard_admin.png)
 
 ---
-## Démo — Swagger UI
+## Démo - Swagger UI
 L'API expose une documentation interactive auto-générée par FastAPI.
 
-### Exemple de ticket simple — Réponse automatique
+### Exemple de ticket simple - Réponse automatique
 **Requête :**
 ```json
 {
@@ -94,7 +94,7 @@ L'API expose une documentation interactive auto-générée par FastAPI.
 }
 ```
 
-### Exemple de ticket complexe — Escalade automatique
+### Exemple de ticket complexe - Escalade automatique
 **Requête :**
 ```json
 {
@@ -176,5 +176,5 @@ smartdesk/
 
 ---
 ## Auteur
-**Déhollin HOLLAT** — Chef de Projet Data IA  
+**Déhollin HOLLAT** - Chef de Projet Data IA  
 **Dehollin.hollat@outlook.fr**
