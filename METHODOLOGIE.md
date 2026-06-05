@@ -1,11 +1,11 @@
-# 🟣 SmartDesk — Méthodologie
+# SmartDesk — Méthodologie
 
 **Auteur :** Déhollin HOLLAT, Chef de Projet Data IA
 > Agent IA de support IT capable de traiter automatiquement les tickets simples et d'escalader les cas complexes — exposé via une API REST et piloté depuis un dashboard Streamlit avec deux vues distinctes (employé et administrateur).
 
 ---
 
-## 📋 Sommaire
+## Sommaire
 
 - [Pourquoi ce projet ?](#pourquoi-ce-projet)
 - [Vue d'ensemble du pipeline](#vue-densemble-du-pipeline)
