@@ -1,10 +1,10 @@
-# 🟣 SmartDesk — Agent IA de Support IT avec RAG et Escalade Automatique
+# SmartDesk — Agent IA de Support IT avec RAG et Escalade Automatique
 
 > Projet personnel réalisé dans le cadre d'une formation MBA Big Data & IA
 > pour développer des compétences concrètes en IA générative et développement API.
 ---
 
-## 📌 Problématique
+## Problématique
 Dans les ESN et entreprises, le support IT interne traite chaque semaine des
 centaines de tickets. Une grande partie concerne des problèmes récurrents et
 bien documentés : réinitialisation de mot de passe, problème VPN, installation
@@ -17,11 +17,11 @@ SmartDesk automatise ce cycle en déployant un agent IA capable de :
 - **Escalader intelligemment** les cas complexes à un agent humain
 
 
-**🎯 Résultat : traitement automatique des tickets simples, escalade justifiée
+**Résultat : traitement automatique des tickets simples, escalade justifiée
 des cas complexes exposé via une API REST consommable.**
 
 ---
-## 🧠 Concepts clés
+##  Concepts clés
 | Concept | Application dans SmartDesk |
 |---|---|
 | **RAG** (Retrieval-Augmented Generation) | L'agent consulte la FAQ IT avant de répondre |
@@ -29,7 +29,7 @@ des cas complexes exposé via une API REST consommable.**
 | **API REST** | Endpoint POST /ticket consommable par n'importe quel système |
 
 ---
-## ⚙️ Architecture
+## Architecture
 ```
 [Ticket entrant via POST /ticket]
         ↓
@@ -45,7 +45,7 @@ RÉPONSE     ESCALADE
 ```
 
 ---
-## 🖥️ Dashboard Streamlit
+## Dashboard Streamlit
 
 SmartDesk embarque un dashboard Streamlit avec deux vues distinctes.
 
@@ -72,7 +72,7 @@ Interface dédiée aux administrateurs : KPIs en temps réel, historique complet
 ![Dashboard Admin](docs/Dashboard_admin.png)
 
 ---
-## 🖥️ Démo — Swagger UI
+## Démo — Swagger UI
 L'API expose une documentation interactive auto-générée par FastAPI.
 
 ### Exemple de ticket simple — Réponse automatique
@@ -114,7 +114,7 @@ L'API expose une documentation interactive auto-générée par FastAPI.
 ```
 
 ---
-## 🚀 Installation & Lancement
+## Installation & Lancement
 ```bash
 # 1. Cloner le repo
 git clone https://github.com/ton-profil/smartdesk.git
@@ -134,7 +134,7 @@ streamlit run src/Accueil.py
 ```
 
 ---
-## 🛠️ Stack technique
+## Stack technique
 | Outil | Rôle |
 |---|---|
 | Python | Langage principal |
@@ -146,7 +146,7 @@ streamlit run src/Accueil.py
 | python-dotenv | Gestion sécurisée de la clé API |
 
 ---
-## 📂 Structure du repo
+## Structure du repo
 ```
 smartdesk/
 ├── data/
@@ -169,12 +169,12 @@ smartdesk/
 ```
 
 ---
-## 💡 Améliorations possibles
+## Améliorations possibles
 - Ajout d'un historique de conversation (mémoire multi-tours)
 - Connexion à un vrai système de ticketing (Jira, ServiceNow)
 - Déploiement sur Railway ou Render
 
 ---
-## 👤 Auteur
+## Auteur
 **Déhollin HOLLAT** — Chef de Projet Data IA  
 **Dehollin.hollat@outlook.fr**
